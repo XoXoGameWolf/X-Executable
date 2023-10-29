@@ -1,0 +1,49 @@
+OPCODES
+0x00 00,00 - NOP - Do nothing
+0x01 R1,D1 - MOV R1,D1 - Move data(D1) into a register(R1)
+0x02 R1,R2 - MOV R1,R2 - Move a register(R2) into a register(R1)
+0x03 R1,D1 - ADD R1,D1 - Add data(D1) to a register(R1) and store in a register(R1)
+0x04 R1,R2 - ADD R1,R2 - Add a register(R2) to a register(R1) and store in a register(R1)
+0x05 R1,D1 - SUB R1,D1 - Subtract data(D1) from a register(R1) and store in a register(R1)
+0x06 R1,R2 - SUB R1,R2 - Subtract a register(R2) from a register(R1) and store in a register(R1)
+0x07 R1,D1 - MUL R1,D1 - Multiply data(D1) by a register(R1) and store in a register(R1)
+0x08 R1,R2 - MUL R1,R2 - Multiply a register(R1) by a register(R2) and store in a register(R1)
+0x09 R1,D1 - DIV R1,D1 - Divide a register(R1) by a data(D1) and store in a register(R1)
+0x0A R1,R2 - DIV R1,R2 - Divide a register(R1) by a register(R2) and store in a register(R1)
+0x0B A1,00 - JMP A1 - Set the program counter to an address(A1)
+0x0C A1,00 - CALL A1 - Set the program counter to an address(A1) and add to the stack
+0x0D 00,00 - RET - Set the program counter to the last known call position and decrement the stack
+0x0E R1,00 - INC R1 - Take a register(R1) and add 1 to it
+0x0F R1,00 - DEC R1 - Take a register(R1) and subtract 1 from it
+0x10 R1,R2 - AND R1,R2 - Take a register(R1) and a register(R2) and run a bitwise AND and store the result in a register(R1)
+0x11 R1,R2 - OR R1,R2 - Take a register(R1) and a register(R2) and run a bitwise OR and store the result in a register(R1)
+0x12 R1,R2 - XOR R1,R2 - Take a register(R1) and a register(R2) and run a bitwise XOR and store the result in a register(R1)
+0x13 00,00 - HALT - Stop the program from executing any further
+0x14 D1,R1 - INT D1,R1 - Run an interrupt of a type(D1) and add on some extra data(R1)
+0x15 R1,R2 - JE R1,R2 - Skip the next instruction if a register(R1) is equal to a register(R2)
+0x16 R1,R2 - JNE R1,R2 - Skip the next instruction if a register(R1) is not equal to a register(R2)
+0x17 R1,R2 - JGT R1,R2 - Skip the next instruction if a register(R1) is greater than a register(R2)
+0x18 R1,R2 - JLT R1,R2 - Skip the next instruction if a register(R1) is less than a register(R2)
+0x19 R1,R2 - JGTE R1,R2 - Skip the next instruction if a register(R1) is greater than or equals to a register(R2)
+0x20 R1,R2 - JLTE R1,R2 - Skip the next instruction if a register(R1) is less than or equals to a register(R2)
+
+INTERRUPTS
+Console Operations
+0x11 - COUT R1 - Print out the textual value of a register(R1)
+0x12 - CHIN R1 - Wait for the player to input a character, and store it in a register(R1)
+
+Mathematical Operations
+0x21 - SQRT R1 - Take the square root of a register(R1) and store it in a register(R1)
+0x22 - SINE R1 - Take the sine of a register(R1) and store it in a register(R1)
+0x23 - COSS R1 - Take the cosine of a register(R1) and store it in a register(R1)
+
+Time Operations
+0x31 - WAIT R1 - Wait for the value of a register(R1) seconds
+
+Graphical Operations
+0x41 - OPNW R1 - Open a window with an average FPS of the value of a register(R1)
+0x42 - FLIP R1 - Flip the frame buffer and display any changes to the screen
+0x43 - BLNK R1 - Clear the frame buffer
+0x44 - PIXL R1 - Draw pixel at ((R1)+(R1+1),(R1+2)+(R1+3))
+0x45 - LINE R1 - Draw a line from ((R1)+(R1+1),(R1+2)+(R1+3)) to ((R1+4)+(R1+5),(R1+6)+(R1+7))
+0x46 - CIRC R1 - Draw a circle at ((R1)+(R1+1),(R1+2)+(R1+3)) with a radius of (R1+4)+(R1+5)
